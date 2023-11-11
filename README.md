@@ -1,1 +1,1 @@
-# ProjetoInterdisciplinar / Iniciação Científica (2021-2022 - Tiago Carlos Batista) - Software para gestão e controle de desperdíciod no restaurante universitário do IFSULDEMINAS - Campus Muzambinho
+# Código fonte do sistema desenvolvido para o Trabalho de Conclusão de Curso (TCC), do curso de Ciência da Computação
