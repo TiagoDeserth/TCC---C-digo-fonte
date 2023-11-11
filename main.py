@@ -42,6 +42,9 @@ categoria_dao=CategoriaDao(db)
 cardapio_dao=CardapioDao(db)
 alimento_has_cardapio_dao = Alimento_has_CardapioDao(db)
 
+def GitHubTeste():
+    pass
+
 @app.route('/')
 def index():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
