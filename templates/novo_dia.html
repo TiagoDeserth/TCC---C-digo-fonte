@@ -1,0 +1,41 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/criar_dia" method="post">
+        <fieldset>
+          <div class="form-group">
+            <label for="Data">Data</label>
+            <input type="date" id="Data" name="Data" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="Dia_Semana">Dia da Semana</label>
+            <select class="form-select" id="Dia_Semana" name="Dia_Semana">
+              <option value="Domingo">Domingo</option>
+              <option value="Segunda-Feira">Segunda-Feira</option>
+              <option value="Terça-Feira">Terça-Feira</option>
+              <option value="Quarta-Feira">Quarta-Feira</option>
+              <option value="Quinta-Feira">Quinta-Feira</option>
+              <option value="Sexta-Feira">Sexta-Feira</option>
+              <option value="Sábado">Sábado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Precipitacao">Precipitação</label>
+            <input type="number" id="Precipitacao" name="Precipitacao" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="Umidade">Umidade</label>
+            <input type="number" id="Umidade" name="Umidade" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="Vento">Vento</label>
+            <input type="number" id="Vento" name="Vento" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="Temperatura">Temperatura</label>
+            <input type="number" id="Temperatura" name="Temperatura" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_dias')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

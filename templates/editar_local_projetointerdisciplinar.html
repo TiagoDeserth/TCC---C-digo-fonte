@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/atualizar_local" method="post">
+        <fieldset>
+          <input type="hidden" name="ID_Local_RU" value="{{local._ID_Local_RU}}">
+          <div class="form-group">
+            <label for="Nome_RU">Nome</label>
+            <input type="text" id="Nome_RU" name="Nome_RU" class="form-control" value="{{local._Nome_RU}}">
+          </div>
+          <div class="form-group">
+            <label for="Local_RU">Local</label>
+            <input type="text" id="Local_RU" name="Local_RU" class="form-control" value="{{local._Local_RU}}">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_locais')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

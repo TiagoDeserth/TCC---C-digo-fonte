@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/atualizar_eventos" method="post">
+        <fieldset>
+          <input type="hidden" name="ID_Eventos" value="{{evento._ID_Eventos}}">
+          <div class="form-group">
+            <label for="Nome_Evento">Nome do Evento</label>
+            <input type="text" id="Nome_Evento" name="Nome_Evento" class="form-control" value="{{evento._Nome_Evento}}">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_eventos')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

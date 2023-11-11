@@ -1,0 +1,99 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <form action="/criar_cardapio" method="post">
+      <fieldset>
+        <div class="form-group">
+              <label for="Quantidade_por_aluno">Quantidade por aluno</label>
+              <input type="text" id="Quantidade_por_aluno" name="Quantidade_por_aluno" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="Data">Data</label>
+            <select class="form-select" id="Data" name="Data">
+            {% for dia in dias %}
+                <option value="{{dia._ID_Dia}}" selected>{{dia._Data}}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Dia_Semana">Dia da Semana</label>
+            <select class="form-select" id="Dia_Semana" name="Dia_Semana">
+            {% for dia in dias %}
+                <option value="{{dia._ID_Dia}}" selected>{{dia._Dia_Semana}}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Modalidade_Refeicao">Modalidade da Refeição</label>
+            <select class="form-select" id="Modalidade_Refeicao" name="Modalidade_Refeicao">
+            {% for modalidade in modalidades %}
+                <option value="{{modalidade._ID_Modalidade_Refeicao}}" selected>{{modalidade._Modalidade}}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group" id="alimentos-container">
+            {% for alimento_hc in alimento_has_cardapio %}
+              <label for="alimentos">Alimento:</label>
+              <div class="alimento-input">
+                <div class="form-group">
+                  <select class="form-select" id="alimento" name="alimento">
+                    {% for alimento in alimentos %}
+                        <option value="{{alimento_hc._Alimento_ID_Alimento}}" selected>{{alimento_hc._Nome_Alimento}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                  <input type="text" class="form-control" name="quantidade[]" placeholder="Quantidade" value="{{alimento_hc._Quantidade_Alimento}}">
+                <button type="button" class="btn btn-danger btn-remover-alimento">Remover</button>
+              </div>
+            {% endfor %}
+        </div>
+
+        <button type="button" class="btn btn-primary btn-adicionar-alimento">Adicionar Alimento</button>
+        <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+        <a class="btn btn-outline-danger" href="{{url_for('lista_cardapios')}}">Voltar</a>
+      </fieldset>
+    </form>
+
+    <script>
+        // Função para adicionar um novo campo de entrada de alimento
+        function adicionarAlimento() {
+          var alimentosContainer = document.getElementById("alimentos-container");
+          var novoAlimentoInput = document.createElement("div");
+          novoAlimentoInput.classList.add("alimento-input");
+          novoAlimentoInput.innerHTML = `
+            <div class="form-group" id="alimentos-container">
+              <select class="form-select" id="alimento" name="alimento">
+                {% for alimento in alimentos %}
+                    <option value="{{alimento._ID_Alimento}}" selected>{{alimento._Descricao}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <input type="text" class="form-control" name="quantidade[]" placeholder="Quantidade" value="0">
+            <button type="button" class="btn btn-danger btn-remover-alimento">Remover</button>
+          `;
+          alimentosContainer.appendChild(novoAlimentoInput);
+        }
+
+        // Função para remover um campo de entrada de alimento
+        function removerAlimento(event) {
+          var alimentoInput = event.target.parentNode;
+          var alimentosContainer = document.getElementById("alimentos-container");
+          alimentosContainer.removeChild(alimentoInput);
+        }
+
+        // Event listener para o botão "Adicionar Alimento"
+        var btnAdicionarAlimento = document.querySelector(".btn-adicionar-alimento");
+        btnAdicionarAlimento.addEventListener("click", adicionarAlimento);
+
+        // Event listener para o botão "Remover"
+        var alimentosContainer = document.getElementById("alimentos-container");
+        alimentosContainer.addEventListener("click", function(event) {
+          if (event.target.classList.contains("btn-remover-alimento")) {
+            removerAlimento(event);
+          }
+        });
+      </script>
+{% endblock %}

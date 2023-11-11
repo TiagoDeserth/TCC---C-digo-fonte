@@ -1,0 +1,86 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <form action="/atualizar" method="post">
+        <input type="hidden" name="ID_Alimento" value="{{ alimento._ID_Alimento }}">
+        <fieldset>
+            <div class="form-group">
+                <label for="Descricao">Descrição</label>
+                <input type="text" id="Descricao" name="Descricao" class="form-control" value="{{ alimento._Descricao }}">
+            </div>
+            <div class="form-group">
+                <label for="kcal">kcal</label>
+                <input type="text" id="kcal" name="kcal" class="form-control" value="{{ alimento._kcal }}">
+            </div>
+            <div class="form-group">
+                <label for="kJ">kJ</label>
+                <input type="text" id="kJ" name="kJ" class="form-control" value="{{ alimento._kJ }}">
+            </div>
+            <div class="form-group">
+                <label for="Proteina">Proteína</label>
+                <input type="text" id="Proteina" name="Proteina" class="form-control" value="{{ alimento._Proteina }}">
+            </div>
+            <div class="form-group">
+                <label for="Lipideos">Lipídios</label>
+                <input type="text" id="Lipideos" name="Lipideos" class="form-control" value="{{ alimento._Lipideos }}">
+            </div>
+            <div class="form-group">
+                <label for="Carboidratos">Carboidratos</label>
+                <input type="text" id="Carboidratos" name="Carboidratos" class="form-control" value="{{ alimento._Carboidratos }}">
+            </div>
+            <div class="form-group">
+                <label for="Calcio">Cálcio</label>
+                <input type="text" id="Calcio" name="Calcio" class="form-control" value="{{ alimento._Calcio }}">
+            </div>
+            <div class="form-group">
+                <label for="Ferro">Ferro</label>
+                <input type="text" id="Ferro" name="Ferro" class="form-control" value="{{ alimento._Ferro }}">
+            </div>
+            <div class="form-group">
+                <label for="Retinol">Retinol</label>
+                <input type="text" id="Retinol" name="Retinol" class="form-control" value="{{ alimento._Retinol }}">
+            </div>
+            <div class="form-group">
+                <label for="Vitamina_C">Vitamina C</label>
+                <input type="text" id="Vitamina_C" name="Vitamina_C" class="form-control" value="{{ alimento._Vitamina_C }}">
+            </div>
+            <div class="form-group">
+                <label for="Sodio">Sódio</label>
+                <input type="text" id="Sodio" name="Sodio" class="form-control" value="{{ alimento._Sodio}}">
+            </div>    
+            <div class="form-group">
+                <label for="Categoria">Categoria</label>
+                <select class="form-select" id="Categoria" name="Categoria">
+                {% for categoria in categorias %}
+                {% if alimento._Categorias_ID_Categoria==categoria._ID_Categoria %}
+                    <option value="{{categoria._ID_Categoria}}" selected>{{categoria._Nome_Categoria}}</option>
+                {% else %}
+                    <option value="{{categoria._ID_Categoria}}">{{categoria._Nome_Categoria}}</option>
+                {% endif %}
+                {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Cor">Cor</label>
+                <select id="Cor" name="Cor" class="form-control">
+                    <option value="Red">Vermelho</option>
+                    <option value="Yellow">Amarelo</option>
+                    <option value="Blue">Azul</option>
+                </select>
+            </div>
+            
+            <script>
+                var corSelecionada = "{{ alimento._Cor }}"; // Substitua pelo valor real
+            
+                var selectElement = document.getElementById("Cor");
+                for (var i = 0; i < selectElement.options.length; i++) {
+                    if (selectElement.options[i].value === corSelecionada) {
+                        selectElement.options[i].selected = true;
+                        break;
+                    }
+                }
+            </script>
+            <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+            <a class="btn btn-outline-danger" href="{{url_for('lista_alimentos')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

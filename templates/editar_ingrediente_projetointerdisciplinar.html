@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/atualizar_ingrediente" method="post">
+        <fieldset>
+          <input type="hidden" name="ID_Ingrediente" value="{{ingrediente._ID_Ingrediente}}">
+          <div class="form-group">
+            <label for="Descricao_Ingrediente">Descrição</label>
+            <input type="text" id="Descricao_Ingrediente" name="Descricao_Ingrediente" class="form-control" value="{{ingrediente._Descricao_Ingrediente}}">
+          </div>
+          <div class="form-group">
+            <label for="Quantidade_Ingrediente">Quantidade</label>
+            <input type="text" id="Quantidade_Ingrediente" name="Quantidade_Ingrediente" class="form-control" value="{{ingrediente._Quantidade_Ingrediente}}">
+          </div>
+           <div class="form-group">
+            <label for="Unidade_Medida_Ingrediente">Unidade de Medida</label>
+            <input type="text" id="Unidade_Medida_Ingrediente" name="Unidade_Medida_Ingrediente" class="form-control" value="{{ingrediente._Unidade_Medida_Ingrediente}}">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_ingredientes')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

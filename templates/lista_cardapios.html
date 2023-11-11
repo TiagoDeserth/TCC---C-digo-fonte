@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<body>
+    <div class="container">
+        <h1 class="page-header">Lista de Cardapios</h1>
+        <a class="btn btn-outline-success" href="{{url_for('novo_cardapio')}}">Novo Cardápio</a>
+            <table class="table table-striped table-responsive table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">ID do Cardápio</th>
+                        <th scope="col">Quantidade por aluno</th>
+                        <th scope="col">Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for cardapio in cardapios %}
+                    <tr>
+                        <td>{{cardapio._ID_Cardapio}}</td>
+                        <td>{{cardapio._Quantidade_por_aluno}}</td>
+                        <td>{{cardapio._Dia_ID_Dia}}</td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">Editar</a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">Deletar</a></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+{% endblock %}

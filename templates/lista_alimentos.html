@@ -1,0 +1,251 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<body>
+    <div class="container">
+        <h1 class="page-header">Lista de Alimentos</h1>
+        <a class="btn btn-outline-success" href="{{url_for('novo_alimento')}}">Novo Alimento</a>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">
+            Upload CSV
+        </button>
+        <!--Modal para arquivo UPLOAD de arquivo .csv-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Upload de arquivo CSV</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="/processar" method="post" enctype="multipart/form-data">
+                    <input type="file" name="csvfile">
+                    <input type="submit" value="Enviar">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <p>
+                        <em><strong>Obs.:</strong> Ao clicar para fora da área do <strong style="color: green;">modal</strong>, ele também é fechado.</em>
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <!-- Arquivos do Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/esm/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="form-control ml-auto" onkeyup="searchTable()" placeholder="Pesquise um alimento...">
+            <button type="button" id="clear-button" data-toggle="tooltip" data-placement="top" title="Limpar">
+                <i class="material-icons">clear</i>
+            </button>
+            <!--<div id="message"></div>-->
+        </div>
+        <div id="searchResult"></div>
+
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col" colspan="1" class="text-center">Tabela de composição em 100g de alimento</th>
+                    <th scope="col" colspan="2" class="text-center align-middle">Energia</th>
+                    <th scope="col" colspan="1" class="align-middle">Proteína</th>
+                    <th scope="col" colspan="1" class="align-middle">Lipídeos</th>
+                    <th scope="col" colspan="1" class="align-middle">Carboidratos</th>
+                    <th scope="col" colspan="1" class="align-middle">Cálcio</th>
+                    <th scope="col" colspan="1" class="align-middle">Ferro</th>
+                    <th scope="col" colspan="1" class="align-middle">Retinol</th>
+                    <th scope="col" colspan="1" class="text-center">Vitamina C</th>
+                    <th scope="col" colspan="1" class="text-center align-middle">Sódio</th>
+                    <th scope="col" rowspan="2" class="align-middle">Categoria</th>
+                    <th colspan="2" rowspan="2"></th>
+                </tr>
+                <tr>
+                    <th scope="col" class="text-center align-middle">Descrição dos alimentos</th>
+                    <th scope="col" class="text-center align-middle">(kcal)</th>
+                    <th scope="col" class="text-center align-middle">(kJ)</th>
+                    <th scope="col" class="text-center align-middle">(g)</th>
+                    <th scope="col" class="text-center align-middle">(g)</th>
+                    <th scope="col" class="text-center align-middle">(g)</th>
+                    <th scope="col" class="text-center align-middle">(mg)</th>
+                    <th scope="col" class="text-center align-middle">(mg)</th>
+                    <th scope="col" class="text-center align-middle">(mcg)</th>
+                    <th scope="col" class="text-center align-middle">(mg)</th>
+                    <th scope="col" class="text-center align-middle">(mg)</th>
+                </tr>
+            </thead>
+        <tbody id="tabela">
+            {% for alimento in alimentos %}
+                <tr>
+                    <td style="background-color:{{alimento._Cor}}">{{alimento._Descricao}}</td>
+                    <td>{{alimento._kcal}}</td>
+                    <td>{{alimento._kJ}}</td>
+                    <td>{{alimento._Proteina}}</td>
+                    <td>{{alimento._Lipideos}}</td>
+                    <td>{{alimento._Carboidratos}}</td>
+                    <td>{{alimento._Calcio}}</td>
+                    <td>{{alimento._Ferro}}</td>
+                    <td>{{alimento._Retinol}}</td>
+                    <td>{{alimento._Vitamina_C}}</td>
+                    <td>{{alimento._Sodio}}</td>
+                    <td>{{alimento._Categoria}}</td>
+                    <td><a class="btn btn-outline-dark" href="{{url_for('editar', ID_Alimento=alimento._ID_Alimento)}}" title="Editar">
+                        <i class="material-icons">edit</i>
+                    </a></td>                    
+                    <td><a class="btn btn-outline-danger" href="{{url_for('deletar', ID_Alimento=alimento._ID_Alimento)}}" id="deleteButton_{{alimento._ID_Alimento}}" title="Deletar">
+                        <i class="material-icons">delete</i>
+                    </a></td>
+                    <!--Modal para CONFIRMAÇÃO DE EXCLUSÃO DE ALIMENTO-->
+                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role = "document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar exclusão</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Você tem certeza que deseja excluir o <strong style="color: green;">alimento</strong> selecionado? Ações de exclusão <strong style="color: red;">NÃO</strong> podem serem <strong>desfeitas</strong>.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" id="confirmDeleteButton" data-id_alimento="{{ alimento._ID_Alimento }}">Confirmar</button>
+                                    <p>
+                                        <em><strong>Obs.:</strong> Ao clicar para fora da área do <strong style="color: green;">modal</strong>, ele também é fechado.</em>
+                                    </p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </tr>
+            {% endfor %}
+        </tbody>    
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNVQ8" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function searchTable() {
+            let count = 0
+            let message = document.getElementById("searchResult")
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toUpperCase();
+            let table = document.getElementById("tabela");
+            let rows = table.getElementsByTagName("tr");
+            for (let i = 0; i < rows.length; i++) {
+                let cols = rows[i].getElementsByTagName("td");
+                let found = false;
+                for (let j = 0; j < cols.length; j++) {
+                    if (cols[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    rows[i].style.display = "";
+                    count++;
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+            input.addEventListener("input", function(){
+                let input2 = input.value.toLowerCase();
+                if (input2 === "") {
+                    message.innerHTML = "";
+                }
+            })
+            if (filter === "") {
+                message.innerHTML = "";
+            } 
+            else {
+                message.innerHTML = count + " resultado(s) encontrado(s).";  
+            }
+            //document.getElementById("searchResult").innerHTML = count + " resultados encontrados.";  
+        }
+        document.getElementById('clear-button').addEventListener('click', function() {
+            document.getElementById('searchInput').value = '';
+            searchTable('');
+            if (document.getElementById("searchInput").value === ""){
+                document.getElementById("searchResult").innerHTML = "";
+            }
+        });
+
+        /*document.querySelectorAll('[id^="deleteButton_"]').forEach(button => {
+            button.addEventListener('click', function(event){
+                event.preventDefault();
+
+                //Exibição do modal de confirmação
+                $('#confirmDeleteModal').modal('show');
+
+                //Adicionar evento de clique no botão de "Confirmar" do modal de confirmação
+                document.querySelector('#confirmDeleteButton').addEventListener('click', function(){
+                    fetch(button.href, {method: 'DELETE'})
+                        .then(() =>{
+                            //Atualizar a página para exibir a tabela atualizada de "Alimentos"
+                            location.reload()
+                    })
+                    .catch(error => console.error(error));
+                });
+            });
+        });
+        */
+        /*var deleteButtons = document.querySelectorAll("[id^='deleteButton_']"); // seleciona todos os botões que começam com "deleteButton_"
+        for (var i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener('click', function(event) { // adiciona um evento de clique a cada botão
+                event.preventDefault(); // previne que a página recarregue após o clique
+                var url = this.getAttribute('href'); // pega o valor do atributo href do botão
+                var modal = document.getElementById('confirmDeleteModal'); // pega a referência ao Modal
+                //modal.querySelector('.modal-body').innerHTML = 'Deseja mesmo excluir o alimento? Ações de exclusão NÃO podem serem desfeitas!'; // modifica o conteúdo do corpo do Modal
+                modal.find('.modal-footer .btn-danger').attr('href', url); // modifica o atributo href do botão "Confirmar" do Modal, para que ele execute a ação de deleção
+                $('#confirmDeleteModal').modal('show'); // exibe o Modal
+            });
+        }*/
+        /*$(document).ready(function() {
+            var deleteButtons = document.querySelectorAll("[id^='deleteButton_']");
+            for (var i = 0; i < deleteButtons.length; i++) {
+                deleteButtons[i].addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var url = this.getAttribute('href');
+                    var modal = $('#confirmDeleteModal');
+                    modal.find('.modal-footer .btn-danger').attr('href', url);
+                    modal.modal('show');
+                });
+            }
+         });*/
+         
+        $(document).ready(function() {
+            var deleteButtons = document.querySelectorAll("[id^='deleteButton_']");
+
+            for (var i = 0; i < deleteButtons.length; i++) {
+                deleteButtons[i].addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var url = this.getAttribute('href');
+                    var modal = document.getElementById('confirmDeleteModal');
+
+                    $('#confirmDeleteModal').on('show.bs.modal', function () {
+                        modal.querySelector('.modal-footer .btn-danger').setAttribute('href', url);
+                        //modal.querySelector('.modal-body').innerHTML = 'Deseja mesmo excluir o alimento? Ações de exclusão NÃO podem serem desfeitas!';
+                    });
+                    $('#confirmDeleteModal').modal('show');
+                });
+            }
+
+            $('#confirmDeleteModal #confirmDeleteButton').click(function() {
+                var id_alimento = $(this).data('id_alimento');
+                console.log(id_alimento);
+                $.ajax({
+                    url: '/deletar/' + id_alimento,
+                    type: 'DELETE',
+                    success: function(result) {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+        //jQuery, Popper.js, Bootstrap JS -->
+    </script>
+</body>    
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <div class="container">
+        <h1 class="page-header">Lista de Dias</h1>
+        <a class="btn btn-outline-success" href="{{url_for('novo_dia')}}">Novo Dia</a>
+            <table class="table table-striped table-responsive table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Dia</th>
+                        <th scope="col">Precipitação (Milímitros / mm)</th>
+                        <th scope="col">Umidade (Por cento / %)</th>
+                        <th scope="col">Vento (km/h / Quilômetros por hora)</th>
+                        <th scope="col">Temperatura (ºC / Graus Célcius)</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for dia in dias %}
+                    <tr>
+                        <td>{{dia._Data}}</td>
+                        <td>{{dia._Dia_Semana}}</td>
+                        <td>{{dia._Precipitacao}}</td>
+                        <td>{{dia._Umidade}}</td>
+                        <td>{{dia._Vento}}</td>
+                        <td>{{dia._Temperatura}}</td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_dia', ID_Dia=dia._ID_Dia)}}">Editar</a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_dia', ID_Dia=dia._ID_Dia)}}">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <div class="container-sm">
+        <h1 class="page-header">Lista de Modalidades</h1>
+        <a class="btn btn-outline-success" href="{{url_for('novo_modalidades_refeicoes')}}">Nova Modalidade de Refeição</a>
+            <table class="table table-stripped table-bordered table-hover table-responsive">
+                <thead class="table-success">
+                    <tr class="status">
+                        <th scope="col">ID da Modalidade de Refeição</th>
+                        <th scope="col">Nome</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for modalidade in modalidades %}
+                    <tr>
+                        <td>{{modalidade._ID_Modalidade_Refeicao}}</td>
+                        <td>{{modalidade._Modalidade}}</td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_modalidades_refeicoes', ID_Modalidade_Refeicao=modalidade._ID_Modalidade_Refeicao)}}">Editar
+                            <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_modalidades_refeicoes', ID_Modalidade_Refeicao=modalidade._ID_Modalidade_Refeicao)}}">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/criar_categoria" method="post">
+        <fieldset>
+          <div class="form-group">
+            <label for="Nome_Categoria">Nome da Categoria</label>
+            <input type="text" id="Nome_Categoria" name="Nome_Categoria" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_categorias')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

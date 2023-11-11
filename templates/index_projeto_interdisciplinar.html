@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1 class="page-header text-center">Sistema de Controle do Restaurante Estudantil</h1>
+    <body class="cor-fundo">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <div class="jumbotron">
+            <h1 class="display-4">
+                {{title}}
+                <img src="{{url_for('static', filename='muzambinho-logo.png')}}" class="imagem rounded mx-auto d-block">
+                <p class="text-center"> RU - Muzambinho </p>
+            </h1>
+        </div>
+    </body>
+{%endblock %}

@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/criar_evento" method="post">
+        <fieldset>
+          <div class="form-group">
+            <label for="Nome_Evento">Nome do Evento</label>
+            <input type="text" id="Nome_Evento" name="Nome_Evento" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_eventos')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

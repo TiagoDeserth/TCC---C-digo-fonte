@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/atualizar_usuario" method="post">
+        <fieldset>
+          <input type="hidden" name="id" value="{{usuario_id}}">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-control" value="{{usuario._nome}}">
+          </div>
+          <div class="form-group">
+            <label for="tipo_usuario">Tipo de Usuário</label>
+            <input type="text" id="tipo_usuario" name="tipo_usuario" class="form-control" value="{{usuario._tipo_usuario}}">
+          </div>
+          <div class="form-group">
+            <label for="email_usuario">Email</label>
+            <input type="text" id="email_usuario" name="email_usuario" class="form-control" value="{{usuario._email_usuario}}">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_usuarios')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}

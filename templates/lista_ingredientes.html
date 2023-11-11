@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <div class="container">
+        <h1 class="page-header">Lista de Ingredientes</h1>
+        <a class="btn btn-outline-success" href="{{url_for('novo_ingrediente')}}">Novo Ingrediente</a>
+            <table class="table table-striped table-responsive table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">ID do Ingrediente</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Unidade de Medida</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for ingrediente in ingredientes %}
+                    <tr>
+                        <td>{{ingrediente._ID_Ingrediente}}</td>
+                        <td>{{ingrediente._Descricao_Ingrediente}}</td>
+                        <td>{{ingrediente._Quantidade_Ingrediente}}</td>
+                        <td>{{ingrediente._Unidade_Medida_Ingrediente}}</td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_ingrediente', ID_Ingrediente=ingrediente._ID_Ingrediente)}}">Editar</a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_ingrediente', ID_Ingrediente=ingrediente._ID_Ingrediente)}}">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}

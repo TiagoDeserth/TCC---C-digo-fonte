@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.imagem{
+    max-width:200px;
+    text-align: center;
+    padding: 15px;
+}
+
+.imagem2{
+    max-width:200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 15;
+}
+
+.jumbotron{
+    text-align: center;
+}
+
+.cor-fundo{
+    background-color: #006400;
+}
+
+html {
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.login-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0, .6);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    font-family: 'Montserrat'
+}
+
+.login-box h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.login-box .user-box{
+    position: relative;
+}
+
+.login-box .user-box input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label{
+    top: -20px;
+    left: 0;
+    color: #00ff11;
+    font-size: 12px;
+}
+
+.login-box form button{
+    position: relative;
+    display: inline-block;
+    padding: 15px 20px;
+    color: #00ff11;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    letter-spacing: 4px
+}
+
+.login-box button:hover{
+    background: #00ff11;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #00ff11,
+                0 0 25px #00ff11,
+                0 0 50px #00ff11,
+                0 0 100px #00ff11;
+}
+
+.login-box button span{
+    position: absolute;
+    display: block;
+}
+
+.login-box button span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff11);
+    animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1{
+    0%{
+        left: -100px
+    }
+    50%, 100%{
+        left: 100%;
+    }
+}
+
+.login-box button span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #00ff11);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+}
+
+@keyframes btn-anim2{
+    0%{
+        top: -100%;
+    }
+    50%, 100%{
+        top: 100%;
+    }
+}
+
+.login-box button span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #00ff11);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+}
+
+@keyframes btn-anim3{
+    0%{
+        right: -100%;
+    }
+    50%, 100%{
+        right: 100%;
+    }
+}
+
+.login-box button span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #00ff11);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s
+}
+
+@keyframes btn-anim4{
+    0%{
+        bottom: -100%;
+    }
+    50%, 100%{
+        bottom: 100%;
+    }
+}
+
+.search-container {
+    position: relative;
+}
+
+#searchInput {
+    padding: 8px;
+    border-radius: 4px;
+    width: 50%;
+  }
+  
+ #clear-button {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.modal-footer p {
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+#searchInput{
+    margin-top: 15px;
+}
+
+#searchResult{
+    margin-top: 7px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #f8f9fa;
+    display: flex; /* Alteração: Mudando para flex para alinhar ícone e texto verticalmente */
+    align-items: center; /* Adição: Alinhar verticalmente os ícones e o texto */
+    transition: 0.3s;
+}
+
+.sidebar i.material-icons { /* Estilo para os ícones */
+    margin-right: 10px; /* Espaçamento entre ícone e texto */
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+    color: white;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.greeting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Ajuste a altura conforme necessário */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.welcome-message {
+    color: #f8f9fa; /* Substitua pela cor desejada */
+    /* Outros estilos que você quiser aplicar */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px; /* Defina o tamanho de fonte desejado em pixels */
+}
+
+#searchResult {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#count {
+    font-weight: bold; /* Pode aplicar estilos específicos para o número, se desejar */
+    color: #ff0000; /* Cor do texto para a variável count, substitua pela cor desejada */
+  }
+
+.form-group{
+    font-family: 'Montserrat',
+}
+
+.menu-item{
+    font-size: small;
+}

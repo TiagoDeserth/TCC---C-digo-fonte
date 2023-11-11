@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="/criar_modalidades_refeicoes" method="post">
+        <fieldset>
+          <div class="form-group">
+            <label for="Modalidade">Nome da Modalidade</label>
+            <input type="text" id="Modalidade" name="Modalidade" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
+          <a class="btn btn-outline-danger" href="{{url_for('lista_modalidades_refeicoes')}}">Voltar</a>
+        </fieldset>
+      </form>
+{% endblock %}
