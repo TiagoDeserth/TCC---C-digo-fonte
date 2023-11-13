@@ -14,6 +14,7 @@ SQL_USUARIO_POR_ID='SELECT  id, nome, senha from usuario where id=%s'
 SQL_BUSCA_USUARIOS='SELECT id, nome, senha from usuario'
 SQL_CRIA_USUARIO='INSERT into usuario (id, nome, senha) values (%s, %s, %s)'
 
+
 #Comandos SQL dos Eventos
 SQL_DELETA_EVENTO='DELETE from Eventos where ID_Eventos=%s'
 SQL_CRIA_EVENTO='INSERT into Eventos (Nome_Evento, ID_Eventos) values (%s, %s)'

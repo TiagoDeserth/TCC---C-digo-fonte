@@ -28,14 +28,15 @@
             font-size: 16px;
             color: #f8f9fa;
             display: block;
-            transition: 0.3s;
+            transition: .5s;
         }
 
         .sidebar a:hover {
             background-color: #495057;
             color: white;
-            border-left: 3px solid #00FF00; /* Adicione esta linha para criar uma borda à esquerda */
+            border-left: 8px solid #00ff11; /* Adicione esta linha para criar uma borda à esquerda */
             padding-left: 22px; /* Adicione um padding para compensar a largura da borda */
+            transition: .5s;
         }
 
         .content {
@@ -47,7 +48,7 @@
 <body>
     <div class="sidebar">
         <div class="greeting">
-            <p class="welcome-message">{{ greeting }}, {{ usuario._nome }}</p>
+            <p class="welcome-message">{{greeting}}, {{usuario._nome}}</p>
         </div>
         <a class="menu-item" href="{{ url_for('index') }}"><i class="material-icons">home_filled</i> Início</a>
         <a class="menu-item" href="{{ url_for('lista_alimentos') }}"><i class="material-icons">restaurant_menu</i> Alimentos</a>
@@ -61,8 +62,8 @@
         <a class="menu-item" href="{{ url_for('lista_dias') }}"><i class="material-icons">wb_sunny</i> Dias</a>
         <a class="menu-item" href="{{ url_for('lista_cardapios') }}"><i class="material-icons">star_rate</i> Cardápios (novo)</a>
         <a class="menu-item" href="{{ url_for('logout') }}"><i class="material-icons">logout</i> Encerrar sessão</a>
-        <div class="footer">
-            <p>&copy; {{ current_year }} Restaurante Estudantil. Todos os direitos reservados.</p>
+        <div class="footer-menu">
+            <p>&copy; {{current_year}} Restaurante Estudantil. Todos os direitos reservados.</p>
         </div>
     </div>
     
@@ -97,7 +98,7 @@
 
     <script>
         const currentYear = new Date().getFullYear();
-        document.querySelector(".footer p").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
+        document.querySelector(".footer-menu").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
     </script>
 </body>
 </html>

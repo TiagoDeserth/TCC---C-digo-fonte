@@ -5,8 +5,6 @@ import csv
 
 import mysql.connector
 
-import re
-
 import datetime
 
 import logging
@@ -30,6 +28,7 @@ app.config['MYSQL_DB']='projetointerdisciplinar'
 app.config['MYSQL_PORT']=3306
 app.config['UPLOAD_PATH'] = os.path.dirname(os.path.abspath(__file__))+'/uploads'
 app.config['MESSAGE_TIMEOUT'] = 3
+
 db=MySQL(app)
 alimento_dao=AlimentoDao(db)
 usuario_dao=UsuarioDao(db)
@@ -42,8 +41,7 @@ categoria_dao=CategoriaDao(db)
 cardapio_dao=CardapioDao(db)
 alimento_has_cardapio_dao = Alimento_has_CardapioDao(db)
 
-def QuintoCommit():
-    pass
+
 
 @app.route('/')
 def index():
@@ -474,8 +472,8 @@ def autenticar():
                 return redirect('/')
             else:
                 return redirect('/{}'.format(proxima_pagina))
-    flash('Não logado, tente novamente')
-    return redirect('/login')
+    #flash('Não logado, tente novamente')
+    return render_template('modal_error_login.html')
 
 @app.route('/logout')
 def logout():

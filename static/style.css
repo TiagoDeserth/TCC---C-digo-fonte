@@ -96,108 +96,23 @@ body{
 
 .login-box form button{
     position: relative;
-    display: inline-block;
+    display: block;
     padding: 15px 20px;
     color: #00ff11;
-    font-size: 16px;
+    font-size: 20px;
     text-decoration: none;
-    text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
     margin-top: 20px;
     margin-bottom: 40px;
-    letter-spacing: 4px
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.login-box button:hover{
-    background: #00ff11;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #00ff11,
-                0 0 25px #00ff11,
-                0 0 50px #00ff11,
-                0 0 100px #00ff11;
+.login-box form button:hover {
+    color: red; /* Cor do texto ao passar o mouse */
 }
 
-.login-box button span{
-    position: absolute;
-    display: block;
-}
-
-.login-box button span:nth-child(1){
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00ff11);
-    animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1{
-    0%{
-        left: -100px
-    }
-    50%, 100%{
-        left: 100%;
-    }
-}
-
-.login-box button span:nth-child(2){
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #00ff11);
-    animation: btn-anim2 1s linear infinite;
-    animation-delay: .25s
-}
-
-@keyframes btn-anim2{
-    0%{
-        top: -100%;
-    }
-    50%, 100%{
-        top: 100%;
-    }
-}
-
-.login-box button span:nth-child(3){
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #00ff11);
-    animation: btn-anim3 1s linear infinite;
-    animation-delay: .5s
-}
-
-@keyframes btn-anim3{
-    0%{
-        right: -100%;
-    }
-    50%, 100%{
-        right: 100%;
-    }
-}
-
-.login-box button span:nth-child(4){
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #00ff11);
-    animation: btn-anim4 1s linear infinite;
-    animation-delay: .75s
-}
-
-@keyframes btn-anim4{
-    0%{
-        bottom: -100%;
-    }
-    50%, 100%{
-        bottom: 100%;
-    }
-}
 
 .search-container {
     position: relative;
@@ -207,7 +122,7 @@ body{
     padding: 8px;
     border-radius: 4px;
     width: 50%;
-  }
+}
   
  #clear-button {
     position: absolute;
@@ -282,7 +197,7 @@ body{
     /* Outros estilos que você quiser aplicar */
 }
 
-.footer {
+.footer-menu {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -291,7 +206,7 @@ body{
     text-align: center;
     padding: 10px 0;
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px; /* Defina o tamanho de fonte desejado em pixels */
+    font-size: 15px; /* Defina o tamanho de fonte desejado em pixels */
 }
 
 #searchResult {
@@ -301,7 +216,7 @@ body{
 #count {
     font-weight: bold; /* Pode aplicar estilos específicos para o número, se desejar */
     color: #ff0000; /* Cor do texto para a variável count, substitua pela cor desejada */
-  }
+}
 
 .form-group{
     font-family: 'Montserrat',
@@ -309,4 +224,19 @@ body{
 
 .menu-item{
     font-size: small;
+}
+
+.modal{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-login {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; /* Defina o tamanho de fonte desejado em pixels */
 }

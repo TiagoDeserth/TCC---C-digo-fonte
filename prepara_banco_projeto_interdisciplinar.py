@@ -140,8 +140,8 @@ cursor.executemany(
     'INSERT INTO projetointerdisciplinar.usuario (id, nome, senha) VALUES (%s, %s, %s)',
     [
         ('tiago', 'Tiago Carlos', 'angels'),
-        ('carlos', 'Carlos Batista', 'demons'),
-        ('chris', 'Chris Cornell', 'audioslave')
+        ('tiago1', 'Carlos Batista', 'demons'),
+        ('tiago2', 'Chris Cornell', 'audioslave')
     ])
 
 cursor.execute('select * from projetointerdisciplinar.usuario')

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RU - Muzambinho</title>
-      <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-      <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
-  </head>
-  <body>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
+</head>
+<body>
     <div class="login-box">
         <h2>Login</h2>
         <form method="POST" action="/autenticar">
@@ -21,14 +21,25 @@
                 <label>Senha:</label>
             </div>
             <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                ENTRAR
+                Logar
             </button>
+
+            <p>Ainda não tem uma conta? Registre-se</p>
+
+            <!--Tag para inserir uma linha-->
+            <hr>
             <img src="{{url_for('static', filename='muzambinho-hor.png')}}" class="imagem2 rounded mx-auto d-block">
         </form>
     </div>
+
+    <div class="footer-login">
+        <hr>
+        &copy; {{current_year}} RU - Muzambinho. Todos os direitos reservados.
+    </div>
+
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.querySelector(".footer-login").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
+    </script>
 </body>
 </html>
