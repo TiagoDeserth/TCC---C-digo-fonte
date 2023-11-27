@@ -25,8 +25,12 @@
                         <td>{{dia._Umidade}}</td>
                         <td>{{dia._Vento}}</td>
                         <td>{{dia._Temperatura}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_dia', ID_Dia=dia._ID_Dia)}}">Editar</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_dia', ID_Dia=dia._ID_Dia)}}">Deletar</a></td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_dia', ID_Dia=dia._ID_Dia)}}">
+                            <i class="material-icons">edit</i>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_dia', ID_Dia=dia._ID_Dia)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

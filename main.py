@@ -1,6 +1,12 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for, jsonify
 import os, io
 
+import pickle
+import jsonpickle
+import joblib
+from sklearn.preprocessing import StandardScaler
+
+
 import csv
 
 import mysql.connector
@@ -40,8 +46,6 @@ dia_dao=DiaDao(db)
 categoria_dao=CategoriaDao(db)
 cardapio_dao=CardapioDao(db)
 alimento_has_cardapio_dao = Alimento_has_CardapioDao(db)
-
-
 
 @app.route('/')
 def index():
@@ -852,7 +856,7 @@ def processar():
     db = mysql.connector.connect(
         host="127.0.0.1",
         user="root",
-        password="123456",
+        password="admin",
         database="projetointerdisciplinar"
     )
 
@@ -903,6 +907,142 @@ def get_greeting():
         return "Boa noite"
     else:
         return "Boa madrugada"
+
+import numpy as np
+modelo = joblib.load('Modelo_Arvore.sav')
+scaler = joblib.load('scaler (1).pkl')
+colunas = ['DIA', 'DESCRIÇÃO', 'Classificação do dia', 'Estudantes RESIDENTES', 'Outros', 'Precipitação', 'Umidade', 'Vento', 'Temperatura']
+
+@app.route('/aprendizado_maquina')
+def aprendizado_maquina():
+    return render_template('predicao.html', titulo = 'Predição')
+
+@app.route('/predicao/', methods = ['POST'])
+def predicao():
+    #Comandos para realização da previsão (Machine Learning)
+    dados = request.form
+    dados_input = [[float(dados[col]) for col in colunas]]
+    print(dados_input)
+    dados_norm = scaler.transform(dados_input)
+    predicao = modelo.predict(dados_norm)
+    predicao_list = list(str(predicao))
+    string_resultante = ''.join(predicao_list)
+    string_resultante = string_resultante.replace('[', '').replace(']', '')
+    numero_float = float(string_resultante)
+    numero_norm = round(numero_float, 1)
+
+    #Regra de 3 para prever a produção de cada alimento
+
+    segundo_valor = dados_input[0][1]
+    print(segundo_valor)
+    
+    producao_arroz = 0
+
+    if segundo_valor == 0.0:
+        producao_arroz = regra_de_tres(40, 448.50, 0, numero_norm)
+        producao_arroz_norm = round(producao_arroz, 1)
+
+        producao_feijao = regra_de_tres(20, 448.50, 0, numero_norm)
+        producao_feijao_norm = round(producao_feijao, 1)
+
+        producao_macarrao = regra_de_tres(12.5, 448.50, 0, numero_norm)
+        producao_macarrao_norm = round(producao_macarrao, 1)
+
+        producao_batata = regra_de_tres(125, 448.50, 0, numero_norm)
+        producao_batata_norm = round(producao_batata, 1)
+
+        producao_carne = regra_de_tres(120, 448.50, 0, numero_norm)
+        producao_carne_norm = round(producao_carne, 1)
+
+        producao_extrato_de_tomate = regra_de_tres(4, 448.50, 0, numero_norm)
+        producao_extrato_de_tomate_norm = round(producao_extrato_de_tomate, 1)
+        
+        producao_alface = regra_de_tres(15, 448.50, 0, numero_norm)
+        producao_alface_norm = round(producao_alface, 1)
+
+        producao_cenoura_ou_beterraba = regra_de_tres(25, 448.50, 0, numero_norm)
+        producao_cenoura_ou_beterraba_norm = round(producao_cenoura_ou_beterraba, 1)
+
+        producao_couve = regra_de_tres(30, 448.50, 0, numero_norm)
+        producao_couve_norm = round(producao_couve, 1)
+
+        producao_tomate = regra_de_tres(30, 448.50, 0, numero_norm)
+        producao_tomate_norm = round(producao_tomate, 1)
+
+        producao_pepino = regra_de_tres(25, 448.50, 0, numero_norm)
+        producao_pepino_norm = round(producao_pepino, 1)
+
+        producao_cebola = regra_de_tres(2, 448.50, 0, numero_norm)
+        producao_cebola_norm = round(producao_cebola, 1)
+ 
+    else:
+        producao_arroz = regra_de_tres(15, 268.5, 0, numero_norm)
+        producao_arroz_norm = round(producao_arroz, 1)
+
+        producao_feijao = regra_de_tres(10, 268.5, 0, numero_norm)
+        producao_feijao_norm = round(producao_feijao, 1)
+
+        producao_macarrao = regra_de_tres(12.5, 268.5, 0, numero_norm)
+        producao_macarrao_norm = round(producao_macarrao, 1)
+
+        producao_batata = regra_de_tres(40, 268.5, 0, numero_norm)
+        producao_batata_norm = round(producao_batata, 1)
+
+        producao_carne = regra_de_tres(60, 268.5, 0, numero_norm)
+        producao_carne_norm = round(producao_carne, 1)
+
+        producao_extrato_de_tomate = regra_de_tres(4, 268.5, 0, numero_norm)
+        producao_extrato_de_tomate_norm = round(producao_extrato_de_tomate, 1)
+        
+        producao_alface = regra_de_tres(15, 268.5, 0, numero_norm)
+        producao_alface_norm = round(producao_alface, 1)
+
+        producao_cenoura_ou_beterraba = regra_de_tres(25, 268.5, 0, numero_norm)
+        producao_cenoura_ou_beterraba_norm = round(producao_cenoura_ou_beterraba, 1)
+
+        producao_couve = regra_de_tres(30, 268.5, 0, numero_norm)
+        producao_couve_norm = round(producao_couve, 1)
+
+        producao_tomate = regra_de_tres(30, 268.5, 0, numero_norm)
+        producao_tomate_norm = round(producao_tomate, 1)
+
+        producao_pepino = regra_de_tres(25, 268.5, 0, numero_norm)
+        producao_pepino_norm = round(producao_pepino, 1)
+
+        producao_cebola = regra_de_tres(2, 268.5, 0, numero_norm)
+        producao_cebola_norm = round(producao_cebola, 1)
+        
+    return render_template('resultado_predicao.html', titulo='Predição', resultado_predicao=numero_norm,
+                            producao_arroz=producao_arroz_norm, 
+                            producao_feijao=producao_feijao_norm,
+                            producao_macarrao=producao_macarrao_norm,
+                            producao_batata=producao_batata_norm,
+                            producao_carne=producao_carne_norm,
+                            producao_extrato_de_tomate=producao_extrato_de_tomate_norm,
+                            producao_alface=producao_alface_norm,
+                            producao_cenoura_ou_beterraba=producao_cenoura_ou_beterraba_norm,
+                            producao_couve=producao_couve_norm,
+                            producao_tomate=producao_tomate_norm,
+                            producao_pepino=producao_pepino_norm,
+                            producao_cebola=producao_cebola_norm)
+
+def regra_de_tres(valor1, quantidade1, valor2, quantidade2):
+    """
+    Calcula o valor desconhecido em uma proporção usando a regra de três simples.
+    
+    :param valor1: Valor conhecido 1
+    :param quantidade1: Quantidade conhecida 1
+    :param valor2: Valor conhecido 2
+    :param quantidade2: Quantidade conhecida 2
+    :return: Valor desconhecido
+    """
+    return (valor1 * quantidade2) / quantidade1
+
+# Exemplo de uso
+# Se 2 itens custam R$ 5, quanto custarão 3 itens?
+#valor_desconhecido = regra_de_tres(40, 448.50, 0, 403.5)
+#print(f'O valor desconhecido é R$ {valor_desconhecido:.2f}')
+
 
 '''@app.route('/uploads/<nome_arquivo>')
 def upload_file(nome_arquivo):

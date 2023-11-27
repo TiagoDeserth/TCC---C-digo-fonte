@@ -17,10 +17,12 @@
                     <tr>
                         <td>{{modalidade._ID_Modalidade_Refeicao}}</td>
                         <td>{{modalidade._Modalidade}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_modalidades_refeicoes', ID_Modalidade_Refeicao=modalidade._ID_Modalidade_Refeicao)}}">Editar
-                            <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_modalidades_refeicoes', ID_Modalidade_Refeicao=modalidade._ID_Modalidade_Refeicao)}}">
+                            <i class="material-icons">edit</i>
                         </a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_modalidades_refeicoes', ID_Modalidade_Refeicao=modalidade._ID_Modalidade_Refeicao)}}">Deletar</a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_modalidades_refeicoes', ID_Modalidade_Refeicao=modalidade._ID_Modalidade_Refeicao)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
             </tbody>

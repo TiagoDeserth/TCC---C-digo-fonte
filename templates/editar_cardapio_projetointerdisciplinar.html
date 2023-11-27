@@ -4,12 +4,12 @@
         <fieldset>
           <input type="hidden" name="ID_Cardapio" value="{{cardapio._ID_Cardapio}}">
           <div class="form-group">
-            <label for="ID_Cardapio">ID_Cardapio</label>
+            <label for="ID_Cardapio">ID_Cardapio:</label>
             <input type="text" id="ID_Cardapio" name="ID_Cardapio" class="form-control" value="{{cardapio._ID_Cardapio}}">
           </div>
 
           <div class="form-group">
-            <label for="Quantidade_por_aluno">Quantidade por aluno</label>
+            <label for="Quantidade_por_aluno">Quantidade por aluno:</label>
             <input type="text" id="Quantidade_por_aluno" name="Quantidade_por_aluno" class="form-control" value="{{cardapio._Quantidade_por_aluno}}">
           </div>
 
@@ -27,7 +27,7 @@
           </div>
 
           <div class="form-group">
-            <label for="Modalidade_Refeicao">Modalidade da Refeição</label>
+            <label for="Modalidade_Refeicao">Modalidade da Refeição:</label>
             <select class="form-select" id="Modalidade_Refeicao" name="Modalidade_Refeicao">
             {% for modalidade in modalidades %}
             {% if modalidade._Modalidade_Refeicao_ID_Modalidade_Refeicao==modalidade._ID_Modalidade_Refeicao %}
@@ -40,8 +40,8 @@
           </div>
           
           <div class="form-group" id="alimentos-container">
+            <label for="alimentos">Alimentos:</label>
           {% for alimento_hc in alimento_has_cardapio %}
-            <label for="alimentos">Alimento:</label>
             <div class="alimento-input">
               <div class="form-group">
                 <select class="form-select" id="alimento" name="alimento">

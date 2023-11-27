@@ -17,8 +17,12 @@
                     <tr>
                         <td>{{categoria._ID_Categoria}}</td>
                         <td>{{categoria._Nome_Categoria}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_categoria', ID_Categoria=categoria._ID_Categoria)}}">Editar</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_categoria', ID_Categoria=categoria._ID_Categoria)}}">Deletar</a></td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_categoria', ID_Categoria=categoria._ID_Categoria)}}">
+                            <i class="material-icons">edit</i>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_categoria', ID_Categoria=categoria._ID_Categoria)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

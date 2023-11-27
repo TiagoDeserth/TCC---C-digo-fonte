@@ -9,7 +9,6 @@
                     <tr>
                         <th scope="col">ID do Cardápio</th>
                         <th scope="col">Quantidade por aluno</th>
-                        <th scope="col">Data</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -18,10 +17,12 @@
                     <tr>
                         <td>{{cardapio._ID_Cardapio}}</td>
                         <td>{{cardapio._Quantidade_por_aluno}}</td>
-                        <td>{{cardapio._Dia_ID_Dia}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">Editar</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">Deletar</a></td>
-                        <td></td>
+                        <td> <a class="btn btn-outline-dark" href="{{url_for('editar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}" title="Editar">
+                            <i class="material-icons">edit</i>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
