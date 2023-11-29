@@ -235,7 +235,7 @@ sup {
 
 a {
   color: #0d6efd;
-  text-decoration: underline;
+  text-decoration: none;
   font-family: 'Montserrat'
 }
 a:hover {
@@ -3899,7 +3899,7 @@ textarea.form-control-lg {
   border-bottom: 1px, #dee2e6;
   display: block;
   padding: 0.5rem 1rem;
-  color: #0d6efd;
+  color: blue;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -3909,7 +3909,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  background: limegreen;
+  background: none;
   transform: scale(1.2);
   text-decoration: blink;
   border-radius: 10px;
@@ -4535,7 +4535,6 @@ textarea.form-control-lg {
 
 .card-footer {
   padding: 0.5rem 1rem;
-  background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 .card-footer:last-child {
@@ -7750,7 +7749,8 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: red !important;
+  font-weight: bold;
 }
 
 .text-black-50 {
@@ -11314,4 +11314,9 @@ textarea.form-control-lg {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px; /* Defina o tamanho de fonte desejado em pixels */
   background-color: #c2bdbd96;
+}
+
+.titleArea{
+  font-size: 25px;
+  text-align: center;
 }

@@ -61,8 +61,22 @@ SQL_CATEGORIA_POR_ID='SELECT ID_Categoria, Nome_Categoria from Categorias where 
 SQL_DELETA_CARDAPIO='DELETE from Cardapio where ID_Cardapio=%s'
 SQL_CRIA_CARDAPIO='INSERT into Cardapio (Quantidade_por_aluno, Modalidade_Refeicao_ID_Modalidade_Refeicao, Dia_ID_Dia) values (%s, %s, %s)'
 SQL_ATUALIZA_CARDAPIO='UPDATE Cardapio SET Quantidade_por_aluno=%s, Modalidade_Refeicao_ID_Modalidade_Refeicao=%s, Dia_ID_Dia=%s where ID_Cardapio=%s'
-SQL_BUSCA_CARDAPIOS='SELECT C.ID_Cardapio, C.Quantidade_por_aluno, C.Dia_ID_Dia, C.Modalidade_Refeicao_ID_Modalidade_Refeicao, D.Data as data_nome, D.Dia_Semana, M.Modalidade as modalidade_nome FROM Cardapio C INNER JOIN Dia D ON C.Dia_ID_Dia=D.ID_Dia INNER JOIN Modalidade_Refeicao M ON C.Modalidade_Refeicao_ID_Modalidade_Refeicao = M.ID_Modalidade_Refeicao'
-SQL_CARDAPIO_POR_ID='SELECT C.ID_Cardapio, C.Quantidade_por_aluno, C.Dia_ID_Dia, C.Modalidade_Refeicao_ID_Modalidade_Refeicao, D.Data as data_nome, D.Dia_Semana, M.Modalidade as modalidade_nome FROM Cardapio C INNER JOIN Dia D ON C.Dia_ID_Dia=D.ID_Dia INNER JOIN Modalidade_Refeicao M ON C.Modalidade_Refeicao_ID_Modalidade_Refeicao = M.ID_Modalidade_Refeicao WHERE C.ID_Cardapio = %s'
+SQL_BUSCA_CARDAPIOS = '''
+    SELECT C.ID_Cardapio, C.Quantidade_por_aluno, C.Dia_ID_Dia,
+           C.Modalidade_Refeicao_ID_Modalidade_Refeicao,
+           D.Data as Data_nome, D.Dia_Semana,
+           M.Modalidade as Modalidade_nome
+    FROM Cardapio C
+    INNER JOIN Dia D ON C.Dia_ID_Dia = D.ID_Dia
+    INNER JOIN Modalidade_Refeicao M ON C.Modalidade_Refeicao_ID_Modalidade_Refeicao = M.ID_Modalidade_Refeicao
+'''
+SQL_CARDAPIO_POR_ID='''SELECT C.ID_Cardapio, C.Quantidade_por_aluno, C.Dia_ID_Dia,
+           C.Modalidade_Refeicao_ID_Modalidade_Refeicao,
+           D.Data as Data_nome, D.Dia_Semana,
+           M.Modalidade as Modalidade_nome
+    FROM Cardapio C
+    INNER JOIN Dia D ON C.Dia_ID_Dia = D.ID_Dia
+    INNER JOIN Modalidade_Refeicao M ON C.Modalidade_Refeicao_ID_Modalidade_Refeicao = M.ID_Modalidade_Refeicao WHERE C.ID_Cardapio = %s'''
 
 #Comando SQL do Alimento_has_Cardapio
 SQL_CRIA_ALIMENTO_HAS_CARDAPIO = "Insert into Alimento_has_Cardapio (Alimento_ID_Alimento, Quantidade_Alimento, Cardapio_ID_Cardapio) values (%s, %s, %s)"
@@ -388,7 +402,8 @@ class CardapioDao:
         cursor=self.__db.connection.cursor()
         cursor.execute(SQL_CARDAPIO_POR_ID, (ID_Cardapio,))
         tupla=cursor.fetchone()
-        return Cardapio(tupla[1], tupla[2], tupla[3], tupla[4], None, None, None, ID_Cardapio=tupla[0])
+        print(len(tupla))
+        return Cardapio(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], tupla[6], None, None, ID_Cardapio=tupla[0])
 
     def deletar(self, ID_Cardapio):
         self.__db.connection.cursor().execute(SQL_DELETA_CARDAPIO, (ID_Cardapio,))
@@ -480,15 +495,11 @@ def traduz_categorias(categorias):
 
 def traduz_cardapios(cardapios):
     def cria_cardapio_com_tupla(tupla):
-        return Cardapio(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], None, None, ID_Cardapio=tupla[0])
+        return Cardapio(tupla[1], tupla[2], tupla[3], tupla[4], tupla[5], tupla[6], None, None, ID_Cardapio=tupla[0])
     return list(map(cria_cardapio_com_tupla, cardapios))
 
 def traduz_alimentos_has_cardapios(alimento_has_cardapio):
     def cria_alimento_has_cardapio_com_tupla(tupla):
-        print("Tupla 0", tupla[0])
-        print("Tupla 1", tupla[1])
-        print("Tupla 2", tupla[2])
-        print("Tupla 3", tupla[3])
         return Alimento_has_Cardapio(tupla[0], tupla[1], tupla[2], tupla[3])
     return list(map(cria_alimento_has_cardapio_com_tupla, alimento_has_cardapio))
 

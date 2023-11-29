@@ -19,8 +19,12 @@
                         <td>{{local._ID_Local_RU}}</td>
                         <td>{{local._Nome_RU}}</td>
                         <td>{{local._Local_RU}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_local', ID_Local_RU=local._ID_Local_RU)}}">Editar</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_local', ID_Local_RU=local._ID_Local_RU)}}">Deletar</a></td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_local', ID_Local_RU=local._ID_Local_RU)}}">
+                            <i class="material-icons">edit</i>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_local', ID_Local_RU=local._ID_Local_RU)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

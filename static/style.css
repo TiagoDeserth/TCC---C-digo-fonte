@@ -24,10 +24,6 @@ button{
     text-align: center;
 }
 
-.cor-fundo{
-    background-color: #006400;
-}
-
 html {
     height: 100%;
 }
@@ -113,6 +109,13 @@ body{
     color: red; /* Cor do texto ao passar o mouse */
 }
 
+.register{
+    color:#00ff11;
+}
+
+.register:hover{
+    color: red;
+}
 
 .search-container {
     position: relative;
@@ -176,6 +179,7 @@ body{
 .sidebar a:hover {
     background-color: #495057;
     color: white;
+    border-left: 8px solid #00ff11
 }
 
 .content {
@@ -222,10 +226,6 @@ body{
     font-family: 'Montserrat',
 }
 
-.menu-item{
-    font-size: small;
-}
-
 .modal{
     font-family: 'Montserrat', sans-serif;
 }
@@ -242,4 +242,35 @@ body{
     background-color: #c2bdbd96;
 }
 
+.butons{
+    padding: 2%;
+    text-align: center;
+}
 
+.butons button{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.butons button:hover{
+    color: red;
+}
+
+.colorRedModal{
+    font-weight: bold;
+    color: red;
+}
+
+.colorGreenModal{
+    font-weight: bold;
+    color: #00ff11
+}
+
+.resultado{
+    color: red;
+    font-weight: bold;
+}
+
+.page-header{
+    font-family: 'Montserrat', sans-serif;
+}

@@ -17,8 +17,12 @@
                     <tr>
                         <td>{{evento._ID_Eventos}}</td>
                         <td>{{evento._Nome_Evento}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_evento', ID_Eventos=evento._ID_Eventos)}}">Editar</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_evento', ID_Eventos=evento._ID_Eventos)}}">Deletar</a></td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_evento', ID_Eventos=evento._ID_Eventos)}}">
+                            <i class="material-icons">edit</i>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_evento', ID_Eventos=evento._ID_Eventos)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

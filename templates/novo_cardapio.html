@@ -4,7 +4,7 @@
       <fieldset>
         <div class="form-group">
               <label for="Quantidade_por_aluno">Quantidade por aluno</label>
-              <input type="text" id="Quantidade_por_aluno" name="Quantidade_por_aluno" class="form-control">
+              <input type="text" id="Quantidade_por_aluno" name="Quantidade_por_aluno" class="form-control" required>
         </div>
 
         <div class="form-group">
@@ -45,7 +45,7 @@
                     {% endfor %}
                   </select>
                 </div>
-                  <input type="text" class="form-control" name="quantidade[]" placeholder="Quantidade" value="{{alimento_hc._Quantidade_Alimento}}">
+                  <input type="text" class="form-control" name="quantidade[]" placeholder="Quantidade" value="{{alimento_hc._Quantidade_Alimento}}" required>
                 <button type="button" class="btn btn-danger btn-remover-alimento">Remover</button>
               </div>
             {% endfor %}

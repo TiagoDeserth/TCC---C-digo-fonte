@@ -21,8 +21,12 @@
                         <td>{{ingrediente._Descricao_Ingrediente}}</td>
                         <td>{{ingrediente._Quantidade_Ingrediente}}</td>
                         <td>{{ingrediente._Unidade_Medida_Ingrediente}}</td>
-                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_ingrediente', ID_Ingrediente=ingrediente._ID_Ingrediente)}}">Editar</a></td>
-                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_ingrediente', ID_Ingrediente=ingrediente._ID_Ingrediente)}}">Deletar</a></td>
+                        <td><a class="btn btn-outline-dark" href="{{url_for('editar_ingrediente', ID_Ingrediente=ingrediente._ID_Ingrediente)}}">
+                            <i class="material-icons">edit</i>
+                        </a></td>
+                        <td><a class="btn btn-outline-danger" href="{{url_for('deletar_ingrediente', ID_Ingrediente=ingrediente._ID_Ingrediente)}}">
+                            <i class="material-icons">delete</i>
+                        </a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

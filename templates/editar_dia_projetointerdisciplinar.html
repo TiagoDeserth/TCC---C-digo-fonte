@@ -2,10 +2,10 @@
 {% block conteudo %}
       <form action="/atualizar_dia" method="post">
         <fieldset>
-          <input type="hidden" name="ID_Dia" value="{{dia._ID_Dia}}">
+          <input type="hidden" name="ID_Dia" value="{{dia._ID_Dia}}" required>
           <div class="form-group">
             <label for="Data">Data</label>
-            <input type="date" id="Data" name="Data" class="form-control" value="{{dia._Data}}">
+            <input type="date" id="Data" name="Data" class="form-control" value="{{dia._Data}}" required>
           </div>
           <div class="form-group">
             <label for="Dia_Semana">Dia da Semana</label>
@@ -21,11 +21,11 @@
           </div>
           <div class="form-group">
             <label for="Precipitacao">Precipitação</label>
-            <input type="number" id="Precipitacao" name="Precipitacao" class="form-control" value="{{dia._Precipitacao}}">
+            <input type="number" id="Precipitacao" name="Precipitacao" class="form-control" value="{{dia._Precipitacao}}" required>
           </div>
           <div class="form-group">
             <label for="Umidade">Umidade</label>
-            <input type="number" id="Umidade" name="Umidade" class="form-control" value="{{dia._Umidade}}">
+            <input type="number" id="Umidade" name="Umidade" class="form-control" value="{{dia._Umidade}}" required>
           </div>
           <div class="form-group">
             <label for="Vento">Vento</label>
@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
             <label for="Temperatura">Temperatura</label>
-            <input type="number" id="Temperatura" name="Temperatura" class="form-control" value="{{dia._Temperatura}}">
+            <input type="number" id="Temperatura" name="Temperatura" class="form-control" value="{{dia._Temperatura}}" required>
           </div>
           <button type="submit" class="btn btn-outline-success btn-salvar">Salvar</button>
           <a class="btn btn-outline-danger" href="{{url_for('lista_dias')}}">Voltar</a>

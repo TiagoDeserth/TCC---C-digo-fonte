@@ -68,12 +68,13 @@ class Categoria:
         self._Nome_Categoria=Nome_Categoria
 
 class Cardapio:
-    def __init__(self, Quantidade_por_aluno, Modalidade_Refeicao_ID_Modalidade_Refeicao, Dia_ID_Dia, Modalidade_Refeicao, Nome_Alimento, Quantidade_Alimento, Alimento_ID, ID_Cardapio=None):
+    def __init__(self, Quantidade_por_aluno, Modalidade_Refeicao_ID_Modalidade_Refeicao, Dia_ID_Dia, Modalidade_Refeicao, Modalidade_nome, Nome_Alimento, Quantidade_Alimento, Alimento_ID, ID_Cardapio=None):
         self._ID_Cardapio=ID_Cardapio
         self._Quantidade_por_aluno=Quantidade_por_aluno
         self._Modalidade_Refeicao_ID_Modalidade_Refeicao=Modalidade_Refeicao_ID_Modalidade_Refeicao
         self._Dia_ID_Dia = Dia_ID_Dia
         self._Modalidade_Refeicao = Modalidade_Refeicao
+        self._Modalidade_nome = Modalidade_nome
 
         #Listas de alimentos
         self._Nome_Alimento = Nome_Alimento

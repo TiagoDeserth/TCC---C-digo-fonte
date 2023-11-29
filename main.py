@@ -6,6 +6,10 @@ import jsonpickle
 import joblib
 from sklearn.preprocessing import StandardScaler
 
+import requests
+from datetime import datetime
+import schedule
+import time
 
 import csv
 
@@ -192,10 +196,11 @@ def lista_cardapios():
 
     lista1=alimento_has_cardapio_dao.listar()
     lista2=alimento_dao.listar()
+    cardapios_com_alimentos = [(cardapio, alimento_has_cardapio_dao.busca_alimentos_cardapio_por_id_cardapio(cardapio._ID_Cardapio)) for cardapio in lista]
 
     if usuario:
         greeting = get_greeting()
-        return render_template('lista_cardapios.html', cardapios=lista, alimentos_no_cardapio=lista1, alimento=lista2, usuario=usuario, greeting=greeting)
+        return render_template('lista_cardapios.html', cardapios=lista, alimentos_no_cardapio=lista1, cardapios_com_alimentos=cardapios_com_alimentos, alimento=lista2, usuario=usuario, greeting=greeting)
 
 #Criando a função de inserir alimentos na lista
 @app.route('/novo_alimento')
@@ -431,6 +436,7 @@ def criar_cardapio():
     Modalidade_Refeicao = request.form['Modalidade_Refeicao']
     Dia_ID_Dia = request.form['Data']
     Dia_Semana = request.form['Dia_Semana']
+    Modalidade_nome = request.form['Modalidade_Refeicao']
     Nome_Alimento = request.form.getlist('alimento')
     Quantidade_Alimento = request.form.getlist('quantidade[]')
     Alimento_ID = request.form.getlist('alimento')
@@ -447,7 +453,7 @@ def criar_cardapio():
                         Modalidade_Refeicao_ID_Modalidade_Refeicao, 
                         Dia_ID_Dia, 
                         Dia_Semana,
-                        None,
+                        Modalidade_nome,
                         Nome_Alimento, 
                         Quantidade_Alimento,
                         Alimento_ID)
@@ -592,6 +598,7 @@ def editar_cardapio(ID_Cardapio):
     if 'usuario_logado' not in session or session['usuario_logado']==None:
         return redirect('/login?proxima=editar_cardapio')
     cardapio=cardapio_dao.busca_por_id(ID_Cardapio)
+    print("TESTE MODALIDADE DE REFEIÇÃO", cardapio._Modalidade_Refeicao)
 
     print("TESTE ID DO CARDÁPIO", ID_Cardapio)
 
@@ -744,6 +751,7 @@ def atualizar_cardapios():
     Quantidade_por_aluno = request.form['Quantidade_por_aluno']
     Modalidade_Refeicao_ID_Modalidade_Refeicao = request.form['Modalidade_Refeicao']
     Dia_ID_Dia = request.form['Data']
+    Modalidade_nome = request.form['Modalidade_Refeicao']
 
     Nome_Alimento = request.form.getlist('alimento')
     Quantidade_Alimento = request.form.getlist('quantidade[]')
@@ -751,6 +759,7 @@ def atualizar_cardapios():
 
     ID_Cardapio = request.form['ID_Cardapio']
 
+    print("Modalidade_Refeição --> ", Modalidade_Refeicao_ID_Modalidade_Refeicao)
     print("ID do alimento ---> ", Alimento_ID)
     print("Nome do alimento ---> ", Nome_Alimento)
     print("Quantidade do alimento ---> ", Quantidade_Alimento)
@@ -762,6 +771,7 @@ def atualizar_cardapios():
                       Modalidade_Refeicao_ID_Modalidade_Refeicao, 
                       Dia_ID_Dia, 
                       None,
+                      Modalidade_nome,
                       Nome_Alimento, 
                       Quantidade_Alimento, 
                       Alimento_ID, 
@@ -1042,7 +1052,6 @@ def regra_de_tres(valor1, quantidade1, valor2, quantidade2):
 # Se 2 itens custam R$ 5, quanto custarão 3 itens?
 #valor_desconhecido = regra_de_tres(40, 448.50, 0, 403.5)
 #print(f'O valor desconhecido é R$ {valor_desconhecido:.2f}')
-
 
 '''@app.route('/uploads/<nome_arquivo>')
 def upload_file(nome_arquivo):

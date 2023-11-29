@@ -1,14 +1,117 @@
 {% extends "template.html" %}
 {% block conteudo %}
-    <h1 class="page-header text-center">Sistema de Controle do Restaurante Estudantil</h1>
-    <body class="cor-fundo">
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-        <div class="jumbotron">
-            <h1 class="display-4">
-                {{title}}
-                <img src="{{url_for('static', filename='muzambinho-logo.png')}}" class="imagem rounded mx-auto d-block">
-                <p class="text-center"> RU - Muzambinho </p>
-            </h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Área de predição</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app6.js') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+    <body>
+        <h1 class="page-header text-center">Sistema de Controle do Restaurante Estudantil</h1>
+        <hr>
+        <p class="titleArea">Área de conhecimento</p>
+        <div class="container ">
+            <div class="row justify-content-between">
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Alimentos</strong></h5>
+                    <p class="card-text">Na interface de alimentos, é possível carregar toda uma base de dados de uma vez só, porém,
+                        a base dados deve ser do mesmo formato que <strong>Planilha Plan PNAE</strong>. <a href="https://www.gov.br/fnde/pt-br/assuntos/noticias/plan-pnae-auxilia-os-nutricionistas-na-elaboracao-dos-cardapios-para-os-estudantes">Clique aqui</a> para saber mais.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 10 horas</small>
+                    </div>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Usuários</strong></h5>
+                    <p class="card-text">Na interface de usuários, não é possível realizar operações de <strong>inclusão</strong> ou <strong>exclusão</strong>.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 11 horas</small>
+                    </div>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Item no menu não acessível</strong></h5>
+                    <p class="card-text">Por motivos diversos, pode acontecer de algumas interfaces não estarem disponíveis. Se isso acontecer,
+                        você verá, por exemplo, no Menu lateral a interface com uma cor diferente, com visual de desabilitada.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 12 horas</small>
+                    </div>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Ingedientes</strong></h5>
+                    <p class="card-text">Também é possível gerenciar ingredientes. Clique no ícones <i class="material-icons">rice_bowl</i> para saber mais.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 13 horas</small>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Locais</strong></h5>
+                    <p class="card-text">Na interface de locais, você pode visualizar o cadastro de outros REs do IFSULDEMINAS.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 14 horas</small>
+                    </div>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Categorias</strong></h5>
+                    <p class="card-text">Na interface de categorias, é possível visualizar as categorias disponíveis para cada alimento.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 15 horas</small>
+                    </div>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Dias</strong></h5>
+                    <p class="card-text">Na interface de dias, é possível verificar algumas <strong>informações meteorlógicas</strong> sobre determinados dias.
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 16 horas</small>
+                    </div>
+                    </div>
+                </div>
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Você sabia?</div>
+                    <div class="card-body text-success">
+                    <h5 class="card-title"><strong>Interface de Aprendizado de Máquina</strong></h5>
+                    <p class="card-text">Na interface de aprendizado de máquina, é possivel prever a produção de alimentos em determinados dias. 
+                        Você só precisa informar dados como as informações meteorlógicas do dia, a refeição e a quantidade de pessoas presentes na refeição. E pronto,
+                        o sistema lhe fornece quanto precisa produzir de alimentos para não desperdiçar tanta comida. <strong>Simples</strong> e <strong>fácil</strong>. 
+                    </p>
+                    <div class="card-footer">
+                        <small class="text-muted">Atualizado há 17 horas</small>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
+    
 {%endblock %}

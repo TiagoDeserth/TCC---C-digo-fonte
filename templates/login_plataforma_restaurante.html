@@ -8,8 +8,83 @@
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
 </head>
 <body>
+    <div class="butons">
+        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#myModal">
+            Quem somos
+        </button>
+        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#myModal2">
+            Ajuda
+        </button>
+        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#myModal3">
+            Contato
+        </button>
+    </div>
+      
+    <!-- Modal 1 -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Quem somos?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Esse software é um produto desenvolvido a partir do Trabalho de Conclusão de Curso
+                do aluno <span class="colorRedModal">Tiago Carlos Batista</span>, do curso de Ciência da Computação do <span class="colorGreenModal">Instituto Federal do Sul de Minas Gerais - Campus Muzambinho</span>.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+              <!-- Adicione mais botões aqui, se necessário -->
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Modal 2 -->
+    <div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel2">Precisa de alguma ajuda?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Esse software atoda todas as <span class="colorRedModal">boas práticas de desenvolvimento</span> voltado ao <span class="colorGreenModal">usuário</span>. Por exemplo, na página de Previsões,
+                existem ícones "<span class="colorRedModal">?</span>" que ajudam o usuário a compreender o contexto e obter uma usabilidade melhor do sistema. De maneira geral, todo o sistema adota o uso de <span class="colorGreenModal">ícones</span>.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+              <!-- Adicione mais botões aqui, se necessário -->
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Modal 3 -->
+    <div class="modal fade" id="myModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel3">Gostaria de entrar em contato conosco?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Caso tenha alguma <span class="colorRedModal">dúvida</span>, <span class="colorRedModal">sugestão</span> ou <span class="colorRedModal">crítica</span> em relação ao sistema como um todo,
+                por favor nos contate através de: <span class="colorRedModal">(19) 98143-2689</span> ou pelo <span class="colorRedModal">E-mail: tiagodr07@gmail.com</span>. Ficaremos felizes pelo contato... ou não.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+              <!-- Adicione mais botões aqui, se necessário -->
+            </div>
+          </div>
+        </div>
+    </div>
     <div class="login-box">
-        <h2>Login</h2>
+        <h2>Inicie sua sessão</h2>
+        <hr>
         <form method="POST" action="/autenticar">
             <div class="user-box">
                 <input type="hidden" name="proxima" value="{{proxima}}">
@@ -24,7 +99,7 @@
                 Logar
             </button>
 
-            <p>Ainda não tem uma conta? Registre-se</p>
+            <p>Ainda não tem uma conta? <a class="register fw-bolder" href="#">Registre-se</a></p>
 
             <!--Tag para inserir uma linha-->
             <hr>
@@ -40,5 +115,6 @@
         const currentYear = new Date().getFullYear();
         document.querySelector(".footer-login").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
