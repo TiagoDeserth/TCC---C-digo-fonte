@@ -429,6 +429,9 @@ class Alimento_has_CardapioDao:
         print("Quantidade de alimentos nos cardápios:", aux)
         return alimento_has_cardapio
     
+    def teste():
+        pass
+    
     def busca_alimentos_cardapio_por_id_cardapio(self, ID_Cardapio):
         cursor=self.__db.connection.cursor()
         cursor.execute(SQL_ALIMENTO_HAS_CARDAPIO_POR_ID, (ID_Cardapio,))
