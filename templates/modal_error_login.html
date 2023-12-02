@@ -3,18 +3,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
-</head>
-
-<div id="myModal" class="modal">
+ </head>
+ <div id="myModal" class="modal">
     <div class="modal-content">
-        <p>Parece que suas credenciais <strong style="color: red;">estão corretas</strong>. Verifique sua senha clicando no <strong style="color: green;">botão</strong> para mostrar a mesma</p>
-        <div class="modal-footer">
-            <a href="{{url_for('login')}}"><button type="button" class="btn btn-danger">Tentar novamente</button>
-        </div>
+       <p>Parece que suas credenciais <strong style="color: red;">estão corretas</strong>. Verifique sua senha clicando no <strong style="color: green;">botão</strong> para mostrar a mesma</p>
+       <div class="modal-footer">
+          <a href="{{url_for('login')}}"><button type="button" class="btn btn-danger">Tentar novamente</button>
+       </div>
     </div>
-</div>
-
-<style>
+ </div>
+ <style>
     .modal {
     display: none;
     position: fixed;
@@ -25,30 +23,28 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
+    }
+    .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
-</style>
-
-<script>
+    }
+ </style>
+ <script>
     document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName('close')[0];
-
+    
     // Exibir modal
     modal.style.display = 'block';
-
+    
     // Fechar modal ao clicar no botão 'X'
     span.onclick = function () {
         modal.style.display = 'none';
     };
-
+    
     // Fechar modal ao clicar fora dele
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -56,4 +52,4 @@
         }
     };
     });
-</script>
+ </script>

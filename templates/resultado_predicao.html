@@ -1,118 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
-    <title>{{ titulo }}</title>
-    <!-- Adicione links para seus estilos CSS, se necessário -->
-    <style>
-        html, body {
-            height: 100%;
-        }
-    </style>
-</head>
-
-<body class="d-flex justify-content-center align-items-center">
-    <div class="card text-center">
-        <div class="card-body">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+      <title>{{ titulo }}</title>
+      <!-- Adicione links para seus estilos CSS, se necessário -->
+      <style>
+         html, body {
+         height: 100%;
+         }
+      </style>
+   </head>
+   <body class="d-flex justify-content-center align-items-center">
+      <div class="card text-center">
+         <div class="card-body">
             <h1 class="card-title">{{ titulo }}</h1>
             <p> A produção de alimentos, para esse contexto fornecido, será de aproximadamente
-                <div class="resultado">{{ resultado_predicao }} kg</div>
+            <div class="resultado">{{ resultado_predicao }} kg</div>
             </p>
             <hr>
             <button type="button" class="btn btn-outline-primary btn-salvar" data-bs-toggle="modal" data-bs-target="#myModalDetails">
-                Detalhes da produção
+            Detalhes da produção
             </button>
             <a class="btn btn-outline-danger" href="{{url_for('aprendizado_maquina')}}">Voltar</a>   
             <!-- <button class="btn btn-outline-primary btn-salvar" id="mostrarDetalhesBtn">Detalhes de produção</button> -->
             <div class="modal fade" id="myModalDetails" tabindex="-1" aria-labelledby="exampleModalLabelDetails" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+               <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabelDetails">Especifações</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelDetails">Especifações</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
                         <p class="detalhesProducao"> A produção de arroz será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_arroz }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_arroz }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de feijão será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_feijao }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_feijao }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de macarrão será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_macarrao }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_macarrao }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de batata será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_batata }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_batata }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de carne será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_carne }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_carne }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de extrato de tomate será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_extrato_de_tomate }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_extrato_de_tomate }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de alface será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_alface }} unidade(s)
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_alface }} unidade(s)
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de cenoura (ou beterraba) será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_cenoura_ou_beterraba }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_cenoura_ou_beterraba }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de couve será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_couve }} maço(s)
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_couve }} maço(s)
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de tomate será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_tomate }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_tomate }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de pepino será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_pepino }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_pepino }} kg
+                        </div>
                         </p>
                         <p class="detalhesProducao"> A produção de cebola será de: 
-                            <div class="resultado_arroz_almoço detalhesProducao">
-                                {{ producao_cebola }} kg
-                            </div>
+                        <div class="resultado_arroz_almoço detalhesProducao">
+                           {{ producao_cebola }} kg
+                        </div>
                         </p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
-                      <!-- Adicione mais botões aqui, se necessário -->
-                    </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fechar</button>
+                        <!-- Adicione mais botões aqui, se necessário -->
+                     </div>
                   </div>
-                </div>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="footer-login">
-        &copy; {{current_year}} RU - Muzambinho. Todos os direitos reservados.
-    </div>
-
-    <script>
-        const currentYear = new Date().getFullYear();
-        document.querySelector(".footer-login").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+         </div>
+      </div>
+      <div class="footer-login">
+         &copy; {{current_year}} RU - Muzambinho. Todos os direitos reservados.
+      </div>
+      <script>
+         const currentYear = new Date().getFullYear();
+         document.querySelector(".footer-login").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
 </html>

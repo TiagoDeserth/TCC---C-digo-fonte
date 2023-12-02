@@ -354,12 +354,8 @@ class CardapioDao:
     def __init__(self, db):
         self.__db=db
 
-    print("teste")
-
     def salvar(self, cardapio):
         cursor=self.__db.connection.cursor()
-
-        print("TETAS")
 
         if(cardapio._ID_Cardapio):
             cursor.execute(SQL_ATUALIZA_CARDAPIO, (cardapio._Quantidade_por_aluno, cardapio._Modalidade_Refeicao_ID_Modalidade_Refeicao, cardapio._Dia_ID_Dia, cardapio._ID_Cardapio))
@@ -375,8 +371,6 @@ class CardapioDao:
             cursor.execute(SQL_CRIA_CARDAPIO, (cardapio._Quantidade_por_aluno, cardapio._Modalidade_Refeicao_ID_Modalidade_Refeicao, cardapio._Dia_ID_Dia))
 
             cursor._id=cursor.lastrowid
-
-        print("CURSOR - TESTE (DAO): ", cursor)
 
         cursor.execute(SQL_DELETA_ALIMENTO_HAS_CARDAPIO_ID_CARDAPIO, (cursor._id,))
 
@@ -425,12 +419,7 @@ class Alimento_has_CardapioDao:
         cursor=self.__db.connection.cursor()
         cursor.execute(SQL_BUSCA_ALIMENTO_HAS_CARDAPIO)
         alimento_has_cardapio=traduz_alimentos_has_cardapios(cursor.fetchall())
-        aux = len(alimento_has_cardapio)
-        print("Quantidade de alimentos nos cardápios:", aux)
         return alimento_has_cardapio
-    
-    def teste():
-        pass
     
     def busca_alimentos_cardapio_por_id_cardapio(self, ID_Cardapio):
         cursor=self.__db.connection.cursor()

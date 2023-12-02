@@ -8,145 +8,135 @@
       <link rel="stylesheet" href="{{ url_for('static', filename='app6.js') }}">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
    </head>
-    <style>
+   <style>
       .instructionPrediction {
-        font-size: 18px;
-        font-weight: lighter;
+      font-size: 18px;
+      font-weight: lighter;
       }
-    </style>
+   </style>
    <body>
       <div class="page-header p-4">
          <h1>{{ titulo }}</h1>
       </div>
       <h1 class="instructionPrediction px-4">
-        Entre com seus dados a seguir para iniciar o processo de predição de produção
+         Entre com seus dados a seguir para iniciar o processo de predição de produção
       </h1>
       <form action="{{ url_for('predicao') }}" method="post" enctype="multipart/form-data" class="p-4">
       <form class="w-50 p-4">
-          <div class="card w-50 p-4">
+         <div class="card w-50 p-4">
             <div class="col-md-7">
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="DIA">DIA</span>
-                <input type="text" class="form-control" name="DIA" placeholder="Entre com algum valor..." aria-label="DIA" aria-describedby="DIA" required>
-                <div class="invalid-feedback">
-                  Please enter your name.
-                </div>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Se refere ao dia semana. Aqui, você deve colocar um número que represente esse dia. Número '1' representa 'Domingo', '2' representa 'Segunda-feira', '3' representa 'Terça-feira', '4' representa 'Quarta-feira', '5' representa 'Quinta-feira', '6' representa 'Sexta-feira' e '7' representa o 'Sábado'">
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="DIA">DIA</span>
+                  <input type="text" class="form-control" name="DIA" placeholder="Entre com algum valor..." aria-label="DIA" aria-describedby="DIA" required>
+                  <div class="invalid-feedback">
+                     Please enter your name.
+                  </div>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Se refere ao dia semana. Aqui, você deve colocar um número que represente esse dia. Número '1' representa 'Domingo', '2' representa 'Segunda-feira', '3' representa 'Terça-feira', '4' representa 'Quarta-feira', '5' representa 'Quinta-feira', '6' representa 'Sexta-feira' e '7' representa o 'Sábado'">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div>
-      
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="DESCRIÇÃO">DESCRIÇÃO</span>
-                <input type="text" class="form-control" name="DESCRIÇÃO" placeholder="Entre com algum valor..." aria-label="DESCRIÇÃO" aria-describedby="DESCRIÇÃO" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Aqui, está se referindo a modalidade da refeição. '0' representa 'Almoço' e 1 'Jantar'">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="DESCRIÇÃO">DESCRIÇÃO</span>
+                  <input type="text" class="form-control" name="DESCRIÇÃO" placeholder="Entre com algum valor..." aria-label="DESCRIÇÃO" aria-describedby="DESCRIÇÃO" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Aqui, está se referindo a modalidade da refeição. '0' representa 'Almoço' e 1 'Jantar'">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div> 
-            
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Classificação do dia">Classificação do dia</span>
-                <input type="text" class="form-control" name="Classificação do dia" placeholder="Entre com algum valor..." aria-label="Classificação do dia" aria-describedby="Classificação do dia" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Classificação do dia. '0' representa 'Dia normal', '1' representa 'Véspera de final de semana', '2' representa 'Final de semana', '3' representa 'Véspera de feriado', '4' representa 'Feriado', '5' representa 'Recesso' e '6' representa 'Férias escolares'">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Classificação do dia">Classificação do dia</span>
+                  <input type="text" class="form-control" name="Classificação do dia" placeholder="Entre com algum valor..." aria-label="Classificação do dia" aria-describedby="Classificação do dia" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Classificação do dia. '0' representa 'Dia normal', '1' representa 'Véspera de final de semana', '2' representa 'Final de semana', '3' representa 'Véspera de feriado', '4' representa 'Feriado', '5' representa 'Recesso' e '6' representa 'Férias escolares'">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div>  
-
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Estudantes RESIDENTES">Estudantes RESIDENTES</span>
-                <input type="text" class="form-control" name="Estudantes RESIDENTES" placeholder="Entre com algum valor..." aria-label="Estudantes RESIDENTES" aria-describedby="Estudantes RESIDENTES" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Número de alunos residentes">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Estudantes RESIDENTES">Estudantes RESIDENTES</span>
+                  <input type="text" class="form-control" name="Estudantes RESIDENTES" placeholder="Entre com algum valor..." aria-label="Estudantes RESIDENTES" aria-describedby="Estudantes RESIDENTES" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Número de alunos residentes">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div>  
-      
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Outros">Outros</span>
-                <input type="text" class="form-control" name="Outros" placeholder="Entre com algum valor..." aria-label="Outros" aria-describedby="Outros" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Número de todas as pessoas que não são alunos residentes">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Outros">Outros</span>
+                  <input type="text" class="form-control" name="Outros" placeholder="Entre com algum valor..." aria-label="Outros" aria-describedby="Outros" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Número de todas as pessoas que não são alunos residentes">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div>
-
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Precipitação">Precipitação</span>
-                <input type="text" class="form-control" name="Precipitação" placeholder="Entre com algum valor..." aria-label="Precipitação" aria-describedby="Precipitação" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Precipitação medida no momento">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Precipitação">Precipitação</span>
+                  <input type="text" class="form-control" name="Precipitação" placeholder="Entre com algum valor..." aria-label="Precipitação" aria-describedby="Precipitação" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Precipitação medida no momento">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div> 
-              
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Umidade">Umidade</span>
-                <input type="text" class="form-control" name="Umidade" placeholder="Entre com algum valor..." aria-label="Umidade" aria-describedby="Umidade" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Umidade medida no momento">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Umidade">Umidade</span>
+                  <input type="text" class="form-control" name="Umidade" placeholder="Entre com algum valor..." aria-label="Umidade" aria-describedby="Umidade" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Umidade medida no momento">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div> 
-          
-              
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Vento">Vento</span>
-                <input type="text" class="form-control" name="Vento" placeholder="Entre com algum valor..." aria-label="Vento" aria-describedby="Vento" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Vento medido no momento">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Vento">Vento</span>
+                  <input type="text" class="form-control" name="Vento" placeholder="Entre com algum valor..." aria-label="Vento" aria-describedby="Vento" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Vento medido no momento">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div>  
-
-              <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="Temperatura">Temperatura</span>
-                <input type="text" class="form-control" name="Temperatura" placeholder="Entre com algum valor..." aria-label="Temperatura" aria-describedby="Temperatura" required>
-                <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
-                  data-content="Temperatura medida no momento">
+                  </button>
+               </div>
+               <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="Temperatura">Temperatura</span>
+                  <input type="text" class="form-control" name="Temperatura" placeholder="Entre com algum valor..." aria-label="Temperatura" aria-describedby="Temperatura" required>
+                  <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                     data-content="Temperatura medida no momento">
                   <span class="material-symbols-outlined">
-                    question_mark
+                  question_mark
                   </span>
-                </button>
-              </div> 
-              
-              <button type="submit" class="btn btn-outline-primary btn-salvar">Prever</button>
-              <a class="btn btn-outline-danger" href="{{url_for('index')}}">Voltar</a>
+                  </button>
+               </div>
+               <button type="submit" class="btn btn-outline-primary btn-salvar">Prever</button>
+               <a class="btn btn-outline-danger" href="{{url_for('index')}}">Voltar</a>
             </div>
-          </div>
-        </div>
+         </div>
+         </div>
       </form>
       <div class="footer-login">
-        &copy; {{current_year}}
+         &copy; {{current_year}}
       </div>
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
       <script>
-        const currentYear = new Date().getFullYear();
-        document.querySelector(".footer-login").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
-        $(document).ready(function () {
-          $('[data-toggle="popover"]').popover();
-        });
-        // Add event listener to the form's submit event
+         const currentYear = new Date().getFullYear();
+         document.querySelector(".footer-login").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
+         $(document).ready(function () {
+           $('[data-toggle="popover"]').popover();
+         });
+         // Add event listener to the form's submit event
       </script>
    </body>
 </html>

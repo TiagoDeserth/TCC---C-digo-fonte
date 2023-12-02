@@ -2,14 +2,8 @@ from flask import Flask, render_template, request, redirect, session, flash, url
 import os, io
 
 import pickle
-import jsonpickle
 import joblib
 from sklearn.preprocessing import StandardScaler
-
-import requests
-from datetime import datetime
-import schedule
-import time
 
 import csv
 

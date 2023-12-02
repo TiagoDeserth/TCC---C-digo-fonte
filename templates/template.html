@@ -1,109 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Restaurante Universitário</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="icon" href="static/muzambinho-logo.png">
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-
-    <style>
-        /* .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #343a40;
-            padding-top: 20px;
-            font-size: 14px;
-        }
-
-        .sidebar a {
-            padding: 10px 25px;
-            text-decoration: none;
-            font-size: 16px;
-            color: #f8f9fa;
-            display: block;
-            transition: .5s;
-        }
-
-        .sidebar a:hover {
-            background-color: #495057;
-            color: white;
-            border-left: 8px solid #00ff11; Adicione esta linha para criar uma borda à esquerda 
-            padding-left: 22px; Adicione um padding para compensar a largura da borda 
-            transition: .5s;
-        } */
-
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-        }
-        
-        .menu-item.disabled {
-            color: gray;
-            pointer-events: none;
-            text-decoration: none;
-            cursor: not-allowed;
-        }
-    </style>
-</head>
-<body>
-    <div class="sidebar overflow-auto">
-        <div class="greeting">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Restaurante Universitário</title>
+      <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.css')}}">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <link rel="icon" href="static/muzambinho-logo.png">
+      <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+      <style>
+         /* .sidebar {
+         height: 100%;
+         width: 250px;
+         position: fixed;
+         top: 0;
+         left: 0;
+         background-color: #343a40;
+         padding-top: 20px;
+         font-size: 14px;
+         }
+         .sidebar a {
+         padding: 10px 25px;
+         text-decoration: none;
+         font-size: 16px;
+         color: #f8f9fa;
+         display: block;
+         transition: .5s;
+         }
+         .sidebar a:hover {
+         background-color: #495057;
+         color: white;
+         border-left: 8px solid #00ff11; Adicione esta linha para criar uma borda à esquerda 
+         padding-left: 22px; Adicione um padding para compensar a largura da borda 
+         transition: .5s;
+         } */
+         .content {
+         margin-left: 250px;
+         padding: 20px;
+         }
+         .menu-item.disabled {
+         color: gray;
+         pointer-events: none;
+         text-decoration: none;
+         cursor: not-allowed;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="sidebar overflow-auto">
+         <div class="greeting">
             <p class="welcome-message">{{greeting}}, {{usuario._nome}}</p>
-        </div>
-        <a class="menu-item" href="{{ url_for('index') }}"><i class="material-icons">home_filled</i> Início</a>
-        <a class="menu-item" href="{{ url_for('lista_alimentos') }}"><i class="material-icons">restaurant_menu</i> Alimentos</a>
-        <a class="menu-item" href="{{ url_for('lista_usuarios') }}"><i class="material-icons">people_alt</i> Usuários</a>
-        <a class="menu-item" href="{{ url_for('lista_modalidades_refeicoes') }}"><i class="material-icons">brunch_dining</i> Modalidade das Refeições</a>
-        <a class="menu-item" href="{{ url_for('lista_eventos') }}"><i class="material-icons">emoji_events</i> Eventos</a>
-        <a class="menu-item" href="{{ url_for('lista_ingredientes') }}"><i class="material-icons">rice_bowl</i> Ingredientes</a>
-        <a class="menu-item" href="{{ url_for('lista_locais') }}"><i class="material-icons">place</i> Locais</a>
-        <a class="menu-item disabled " href="{{ url_for('lista_cardapios') }}"><i class="material-icons">error_outline</i> Cardápios</a>
-        <a class="menu-item" href="{{ url_for('lista_categorias') }}"><i class="material-icons">category</i> Categorias</a>
-        <a class="menu-item" href="{{ url_for('lista_dias') }}"><i class="material-icons">wb_sunny</i> Dias</a>
-        <a class="menu-item" href="{{ url_for('lista_cardapios') }}"><i class="material-icons">star_rate</i> Cardápios (novo)</a>
-        <a class="menu-item" href="{{ url_for('aprendizado_maquina') }}"><i class="material-icons">brightness_7</i> Aprendizado de Máquina</a>
-        <a class="menu-item" href="{{ url_for('logout') }}"><i class="material-icons">logout</i> Encerrar sessão</a>
-    </div>
-    
-    <div class="content">
-        <div class="page-header">
+         </div>
+         <a class="menu-item" href="{{ url_for('index') }}"><i class="material-icons">home_filled</i> Início</a>
+         <a class="menu-item" href="{{ url_for('lista_alimentos') }}"><i class="material-icons">restaurant_menu</i> Alimentos</a>
+         <a class="menu-item" href="{{ url_for('lista_usuarios') }}"><i class="material-icons">people_alt</i> Usuários</a>
+         <a class="menu-item" href="{{ url_for('lista_modalidades_refeicoes') }}"><i class="material-icons">brunch_dining</i> Modalidade das Refeições</a>
+         <a class="menu-item" href="{{ url_for('lista_eventos') }}"><i class="material-icons">emoji_events</i> Eventos</a>
+         <a class="menu-item" href="{{ url_for('lista_ingredientes') }}"><i class="material-icons">rice_bowl</i> Ingredientes</a>
+         <a class="menu-item" href="{{ url_for('lista_locais') }}"><i class="material-icons">place</i> Locais</a>
+         <a class="menu-item disabled " href="{{ url_for('lista_cardapios') }}"><i class="material-icons">error_outline</i> Cardápios</a>
+         <a class="menu-item" href="{{ url_for('lista_categorias') }}"><i class="material-icons">category</i> Categorias</a>
+         <a class="menu-item" href="{{ url_for('lista_dias') }}"><i class="material-icons">wb_sunny</i> Dias</a>
+         <a class="menu-item" href="{{ url_for('lista_cardapios') }}"><i class="material-icons">star_rate</i> Cardápios (novo)</a>
+         <a class="menu-item" href="{{ url_for('aprendizado_maquina') }}"><i class="material-icons">brightness_7</i> Aprendizado de Máquina</a>
+         <a class="menu-item" href="{{ url_for('logout') }}"><i class="material-icons">logout</i> Encerrar sessão</a>
+      </div>
+      <div class="content">
+         <div class="page-header">
             {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul id="messages" class="list-unstyled">
-                        {% for message in messages %}
-                            <div class="alert alert-success alert-dismissible fade show slide-up" role="alert">
-                                {{message}}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+            {% if messages %}
+            <ul id="messages" class="list-unstyled">
+               {% for message in messages %}
+               <div class="alert alert-success alert-dismissible fade show slide-up" role="alert">
+                  {{message}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               {% endfor %}
+            </ul>
+            {% endif %}
             {% endwith %}
             <h1>{{ titulo }}</h1>
-        </div>
-        {% block conteudo %} {% endblock %}
-    </div>
-    
-    <script>
-        $(document).ready(function() {
-            setTimeout(function() {
-                $('#messages').fadeOut();
-            }, 3000);
-        });
-    </script>
-
-    <script>
-        const currentYear = new Date().getFullYear();
-        document.querySelector(".footer-menu").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
-    </script>
-</body>
+         </div>
+         {% block conteudo %} {% endblock %}
+      </div>
+      <script>
+         $(document).ready(function() {
+             setTimeout(function() {
+                 $('#messages').fadeOut();
+             }, 3000);
+         });
+      </script>
+      <script>
+         const currentYear = new Date().getFullYear();
+         document.querySelector(".footer-menu").innerHTML = `&copy; ${currentYear} Restaurante Esudantil. Todos os direitos reservados.`;
+      </script>
+   </body>
 </html>

@@ -2,46 +2,47 @@
 {% extends "template.html" %}
 {% block conteudo %}
 <body>
-    <div class="container">
-        <h1 class="page-header">Lista de Cardápios</h1>
-        <a class="btn btn-outline-success" href="{{url_for('novo_cardapio')}}">Novo Cardápio</a>
-        <table class="table table-striped table-responsive table-bordered">
-            <thead class="table-success">
-                <tr>
-                    <th scope="col">ID do Cardápio</th>
-                    <th scope="col">Quantidade por aluno</th>
-                    <th scope="col">Dia da Semana</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Modalidade da refeição</th>
-                    <th scope="col">Alimentos</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cardapio, alimentos_do_cardapio in cardapios_com_alimentos %}
-                    <tr>
-                        <td>{{cardapio._ID_Cardapio}}</td>
-                        <td>{{cardapio._Quantidade_por_aluno}}</td>
-                        <td>{{cardapio._Modalidade_nome}}</td>
-                        <td>{{cardapio._Modalidade_Refeicao}}</td>
-                        <td>{{cardapio._Nome_Alimento}}</td> <!-- Correção aqui -->
-                        <td>
-                            {% for alimento in alimentos_do_cardapio %}
-                                {{alimento._Nome_Alimento}};
-                            {% endfor %}
-                        </td>
-                        <td>
-                            <a class="btn btn-outline-dark" href="{{url_for('editar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}" title="Editar">
-                                <i class="material-icons">edit</i>
-                            </a>
-                            <a class="btn btn-outline-danger" href="{{url_for('deletar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">
-                                <i class="material-icons">delete</i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+   <div class="container">
+      <h1 class="page-header">Lista de Cardápios</h1>
+      <a class="btn btn-outline-success" href="{{url_for('novo_cardapio')}}">Novo Cardápio</a>
+      <table class="table table-striped table-responsive table-bordered">
+         <thead class="table-success">
+            <tr>
+               <th scope="col">ID do Cardápio</th>
+               <th scope="col">Quantidade por aluno</th>
+               <th scope="col">Dia da Semana</th>
+               <th scope="col">Data</th>
+               <th scope="col">Modalidade da refeição</th>
+               <th scope="col">Alimentos</th>
+               <th scope="col">Ações</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for cardapio, alimentos_do_cardapio in cardapios_com_alimentos %}
+            <tr>
+               <td>{{cardapio._ID_Cardapio}}</td>
+               <td>{{cardapio._Quantidade_por_aluno}}</td>
+               <td>{{cardapio._Modalidade_nome}}</td>
+               <td>{{cardapio._Modalidade_Refeicao}}</td>
+               <td>{{cardapio._Nome_Alimento}}</td>
+               <!-- Correção aqui -->
+               <td>
+                  {% for alimento in alimentos_do_cardapio %}
+                  {{alimento._Nome_Alimento}};
+                  {% endfor %}
+               </td>
+               <td>
+                  <a class="btn btn-outline-dark" href="{{url_for('editar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}" title="Editar">
+                  <i class="material-icons">edit</i>
+                  </a>
+                  <a class="btn btn-outline-danger" href="{{url_for('deletar_cardapio', ID_Cardapio=cardapio._ID_Cardapio)}}">
+                  <i class="material-icons">delete</i>
+                  </a>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
 </body>
 {% endblock %}
